@@ -3,7 +3,7 @@ export default function NavListItem({ item, navOnClick }) {
 		<li>
 			<a
 				href="#"
-				onClick={() => navOnClick(item._id)}
+				onClick={() => navOnClick(item._id, item.target)}
 				className={`${item.active ? "active" : ""}`}
 			>
 				<i className={`bi ${item.icon}`}></i>

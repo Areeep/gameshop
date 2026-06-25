@@ -2,11 +2,12 @@ import GameCard from "../components/GameCard";
 import GameSwiper from "../components/GameSwiper";
 import "./home.css";
 
-export default function Home({ games }) {
+export default function Home({ games, reference }) {
 	return (
 		<section
 			id="home"
 			className="home active"
+			ref={reference}
 		>
 			<div className="container-fluid">
 				<div className="row">
