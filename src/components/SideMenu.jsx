@@ -4,10 +4,10 @@ import navListData from "../data/navListData";
 import { useState } from "react";
 import socialListData from "../data/socialListData";
 
-export default function SideMenu() {
+export default function SideMenu({ active }) {
 	const [navData, setNavData] = useState(navListData);
 	return (
-		<div className="sideMenu">
+		<div className={`sideMenu ${active ? "active" : undefined}`}>
 			<a
 				href="#"
 				className="logo"
