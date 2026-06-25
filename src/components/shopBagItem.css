@@ -1,0 +1,65 @@
+.shopBagItem {
+	margin-bottom: 20px;
+}
+
+.shopBagItem tr {
+	margin-bottom: 20px !important;
+}
+
+.shopBagTable {
+	--bs-table-bg: transparent;
+	--bs-table-accent-bg: transparent;
+}
+
+.shopBagTable td,
+.shopBagTable th {
+	background-color: transparent;
+	color: #ffffff;
+	font-size: 1.2rem;
+}
+
+.shopBagItem td,
+.shopBagItem th {
+	background: transparent !important;
+	color: #ffffff;
+	font-size: 1.2rem;
+}
+
+.shopBagItem a {
+	color: #ffffff;
+	font-size: 1.6rem;
+}
+
+.shopBagItem img {
+	width: 120px;
+	height: 70px;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 10px;
+}
+
+.itemCount {
+	font-size: 1.3rem;
+}
+
+.payment {
+	display: inline-flex;
+	align-items: center;
+	gap: 50px;
+	font-size: 1.3rem;
+	color: #ffffff;
+}
+
+.payment a {
+	padding: 10px 20px;
+	text-decoration: none;
+	color: #ffffff;
+	border-radius: 15px;
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	background: var(--bgColor);
+	box-shadow:
+		-5px -5px 15px rgba(255, 255, 255, 0.1),
+		5px 5px 15px rgba(0, 0, 0, 0.35);
+}

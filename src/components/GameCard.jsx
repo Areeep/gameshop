@@ -14,6 +14,11 @@ export default function GameCard({ game }) {
 		setLibrary(library.filter((item) => item._id !== game._id));
 	};
 
+	const handleAddToBag = (game) => {
+		if (bag.includes(game)) return;
+		setBag([...bag, game]);
+	};
+
 	return (
 		<div className="col-xl-3 col-lg-4 col-md-6">
 			<div className="gameCard">
@@ -55,6 +60,7 @@ export default function GameCard({ game }) {
 				<a
 					href="#"
 					className="addBag"
+					onClick={() => handleAddToBag(game)}
 				>
 					<i className="bi bi-bag-plus-fill"></i>
 				</a>
