@@ -6,6 +6,16 @@ import socialListData from "../data/socialListData";
 
 export default function SideMenu({ active }) {
 	const [navData, setNavData] = useState(navListData);
+
+	const handleNavOnClick = (id) => {
+		const newNavData = navData.map((nav) => {
+			nav.active = false;
+			if (nav._id === id) nav.active = true;
+			return nav;
+		});
+		setNavData(newNavData);
+	};
+
 	return (
 		<div className={`sideMenu ${active ? "active" : undefined}`}>
 			<a
@@ -21,6 +31,7 @@ export default function SideMenu({ active }) {
 						<NavListItem
 							key={item._id}
 							item={item}
+							navOnClick={handleNavOnClick}
 						/>
 					);
 				})}
