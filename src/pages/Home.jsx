@@ -1,3 +1,4 @@
+import GameCard from "../components/GameCard";
 import GameSwiper from "../components/GameSwiper";
 import "./home.css";
 
@@ -12,7 +13,7 @@ export default function Home({ games }) {
 					<GameSwiper games={games} />
 				</div>
 
-				<div className="row">
+				<div className="row mb-4 mt-4">
 					<div className="col-lg-6">
 						<h2 className="sectionTitle">Games on promotion</h2>
 					</div>
@@ -25,6 +26,15 @@ export default function Home({ games }) {
 							<i className="bi bi-arrow-right"></i>
 						</a>
 					</div>
+				</div>
+
+				<div className="row">
+					{games.slice(0, 4).map((game) => (
+						<GameCard
+							key={game._id}
+							game={game}
+						/>
+					))}
 				</div>
 			</div>
 		</section>
