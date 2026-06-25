@@ -3,11 +3,14 @@ import Categories from "./Categories";
 import Header from "./Header";
 import Home from "./Home";
 import "./main.css";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import MyLibrary from "./MyLibrary";
 import Bag from "./Bag";
+import { AppContext } from "./../contexts/AppContext";
 
 const Main = () => {
+	const { library, bag } = useContext(AppContext);
+
 	const [active, setActive] = useState(false);
 	const [games, setGames] = useState([]);
 
@@ -76,22 +79,26 @@ const Main = () => {
 				<Header toggleActive={handleToggleActive} />
 
 				<div className="container-fluid">
-					<Home
-						games={games}
-						reference={homeRef}
-					/>
-					<Categories
-						games={games}
-						reference={categoriesRef}
-					/>
-					<MyLibrary
-						games={games}
-						reference={libraryRef}
-					/>
-					<Bag
-						games={games}
-						reference={bagRef}
-					/>
+					{games && games.length > 0 && (
+						<>
+							<Home
+								games={games}
+								reference={homeRef}
+							/>
+							<Categories
+								games={games}
+								reference={categoriesRef}
+							/>
+							<MyLibrary
+								games={library}
+								reference={libraryRef}
+							/>
+							<Bag
+								games={bag}
+								reference={bagRef}
+							/>
+						</>
+					)}
 				</div>
 			</div>
 		</main>

@@ -1,9 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Main from "./pages/Main";
+import { useState } from "react";
+import { AppContext } from "./contexts/AppContext";
 
 function App() {
-	return <Main />;
+	const [library, setLibrary] = useState([]);
+	const [bag, setBag] = useState([]);
+	return (
+		<>
+			<AppContext.Provider value={{ library, setLibrary, bag, setBag }}>
+				<Main />
+			</AppContext.Provider>
+		</>
+	);
 }
 
 export default App;

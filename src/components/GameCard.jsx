@@ -1,7 +1,19 @@
 import "./gameCard.css";
 import GameRating from "./GameRating";
+import { useContext } from "react";
+import { AppContext } from "../contexts/AppContext";
 
 export default function GameCard({ game }) {
+	const { library, setLibrary, bag, setBag } = useContext(AppContext);
+
+	const handleAddToLibrary = (game) => {
+		setLibrary([...library, game]);
+	};
+
+	const handleRemoveFromLibrary = (game) => {
+		setLibrary(library.filter((item) => item._id !== game._id));
+	};
+
 	return (
 		<div className="col-xl-3 col-lg-4 col-md-6">
 			<div className="gameCard">
@@ -12,7 +24,12 @@ export default function GameCard({ game }) {
 				/>
 				<a
 					href="#"
-					className="like"
+					className={`like ${library.includes(game) ? "active" : ""}`}
+					onClick={
+						library.includes(game)
+							? () => handleRemoveFromLibrary(game)
+							: () => handleAddToLibrary(game)
+					}
 				>
 					<i className="bi bi-heart-fill"></i>
 				</a>
