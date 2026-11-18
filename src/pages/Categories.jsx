@@ -2,6 +2,12 @@ import "./categories.css";
 import filterListData from "../data/filterListData";
 import { useState } from "react";
 import GameCard from "./../components/GameCard";
+import {
+	SORT_OPTIONS,
+	chunkGames,
+	countByCategory,
+	sortGames,
+} from "../utils/gameUtils";
 
 export default function Categories({ games, reference }) {
 	const [data, setData] = useState(games);
@@ -27,6 +33,10 @@ export default function Categories({ games, reference }) {
 	};
 
 	const [text, setText] = useState("");
+	const [sortKey, setSortKey] = useState("default");
+
+	const categoryCounts = countByCategory(games);
+	const gameRows = chunkGames(sortGames(data, sortKey));
 
 	const handleSearchGames = (e) => {
 		setData(
@@ -54,11 +64,29 @@ export default function Categories({ games, reference }) {
 									onClick={() => handleFilterGames(filter.name)}
 								>
 									{filter.name}
+									{filter.name !== "All" && (
+										<small> ({categoryCounts[filter.name] ?? 0})</small>
+									)}
 								</li>
 							))}
 						</ul>
 					</div>
 					<div className="col-lg-4 d-flex align-items-center justify-content-end">
+						<select
+							className="form-select sortSelect me-3"
+							value={sortKey}
+							onChange={(e) => setSortKey(e.target.value)}
+							aria-label="Sort games"
+						>
+							{SORT_OPTIONS.map((option) => (
+								<option
+									key={option.value}
+									value={option.value}
+								>
+									{option.label}
+								</option>
+							))}
+						</select>
 						<div className="search">
 							<i className="bi bi-search"></i>
 							<input
@@ -72,14 +100,19 @@ export default function Categories({ games, reference }) {
 					</div>
 				</div>
 
-				<div className="row">
-					{data.map((game) => (
-						<GameCard
-							key={game._id}
-							game={game}
-						/>
-					))}
-				</div>
+				{gameRows.map((row, rowIndex) => (
+					<div
+						className="row"
+						key={rowIndex}
+					>
+						{row.map((game) => (
+							<GameCard
+								key={game._id}
+								game={game}
+							/>
+						))}
+					</div>
+				))}
 			</div>
 		</section>
 	);

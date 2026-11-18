@@ -52,3 +52,15 @@
 .search input::placeholder {
 	color: #9c9c9c;
 }
+
+.sortSelect {
+	width: auto;
+	min-width: 180px;
+	color: #ffffff;
+	background-color: transparent;
+	border-color: #3a3a3a;
+}
+
+.sortSelect option {
+	color: #000000;
+}

@@ -113,3 +113,15 @@
 .gameCard .addBag:hover {
 	background: var(--primary);
 }
+
+.gameType.tone-entry {
+	color: #7bd88f;
+}
+
+.gameType.tone-median {
+	color: #f2c94c;
+}
+
+.gameType.tone-high {
+	color: #ff6b6b;
+}

@@ -2,6 +2,7 @@ import "./gameCard.css";
 import GameRating from "./GameRating";
 import { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
+import { getLevelTone } from "../utils/gameUtils";
 
 export default function GameCard({ game }) {
 	const { library, setLibrary, bag, setBag } = useContext(AppContext);
@@ -39,7 +40,9 @@ export default function GameCard({ game }) {
 					<i className="bi bi-heart-fill"></i>
 				</a>
 				<div className="gameFeature">
-					<span className="gameType">{game.level}</span>
+					<span className={`gameType tone-${getLevelTone(game.level)}`}>
+						{game.level}
+					</span>
 					<GameRating rating={game.rating} />
 				</div>
 				<div className="gameTitle mt-4 mb-3">{game.title}</div>

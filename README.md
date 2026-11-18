@@ -1,16 +1,35 @@
-# React + Vite
+# Gameshop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplikasi toko game sederhana berbasis React dan Vite. Pengguna dapat melihat
+promo, memfilter dan mengurutkan game per kategori, menyimpan game ke library,
+dan memasukkan game ke keranjang dengan total pembayaran otomatis.
 
-Currently, two official plugins are available:
+## Struktur
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Folder | Isi |
+|---|---|
+| `src/pages` | Halaman: Home, Categories, MyLibrary, Bag, Header, Main |
+| `src/components` | Komponen: GameCard, GameRating, GameSwiper, SideMenu, dll. |
+| `src/contexts` | `AppContext` untuk state library dan keranjang |
+| `src/utils/gameUtils.js` | Fungsi murni pengolah koleksi game (lihat di bawah) |
+| `src/data` | Data statis navigasi, filter, dan tautan sosial |
+| `public/api/gamesData.json` | Data game |
 
-## React Compiler
+## Fungsi di `gameUtils.js`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Fungsi | Konsep | Dipakai di |
+|---|---|---|
+| `getLevelTone` | percabangan `switch-case` | `GameCard.jsx` |
+| `sortGames` | pengurutan array | `Categories.jsx` |
+| `chunkGames` | perulangan `while`, array dua dimensi | `Categories.jsx` |
+| `countByCategory` | perulangan `for...of` | `Categories.jsx` |
+| `sumBagTotal` | perulangan `for` | `Bag.jsx` |
 
-## Expanding the ESLint configuration
+## Menjalankan
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev      # pengembangan
+npm run lint     # pemeriksaan ESLint
+npm run build    # build produksi
+```
