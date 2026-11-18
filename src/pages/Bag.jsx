@@ -1,15 +1,9 @@
 import ShopBagItem from "../components/ShopBagItem";
+import { sumBagTotal } from "../utils/gameUtils";
 import "./bag.css";
 
 export default function Bag({ games, reference }) {
-	const handleTotalPayment = () => {
-		return games
-			.map((game) => game.price * (1 - game.discount))
-			.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-			.toFixed(2);
-	};
-
-	const total = handleTotalPayment();
+	const total = sumBagTotal(games);
 
 	return (
 		<section
